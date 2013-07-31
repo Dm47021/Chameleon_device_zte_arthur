@@ -6,7 +6,11 @@ on early-init
 on init
 
 # setup the global environment
-    export EXTERNAL_STORAGE /mnt/sdcard
+    mkdir /storage/sdcard 0000 root root
+    export EXTERNAL_STORAGE /storage/sdcard
+    symlink /storage/sdcard /mnt/sdcard
+    symlink /storage/sdcard /sdcard
+    
 	
     mkdir /persist 0771 system system
     mkdir /carrier 0771 system system
@@ -17,12 +21,8 @@ on init
 	
 	# create mountpoints
     mkdir /mnt 0775 root system
-    mkdir /mnt/sdcard 0775 system system
-    mkdir /mnt/sdcard1 0775 system system
     mkdir /sd-ext 0771 system system
 	
-    # Backwards Compat - XXX: Going away in G*
-        symlink /mnt/sdcard /sdcard
 
 # ZTE_SYS_CHENXIHUA_001:chenxihua control read of /dev/log/system
     chmod 0622 /dev/log/system
