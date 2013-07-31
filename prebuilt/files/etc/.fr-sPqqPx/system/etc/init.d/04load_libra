@@ -1,0 +1,9 @@
+#!/system/bin/sh
+sh /system/etc/init.qcom.sdio.sh 1
+insmod /system/lib/modules/librasdioif.ko
+insmod /system/lib/modules/libra.ko
+sh /system/etc/init.qcom.sdio.sh 0
+
+
+
+
